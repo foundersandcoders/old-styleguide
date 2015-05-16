@@ -119,6 +119,21 @@ Create methods with:
 ```
 objectName.prototype.methodName = function () {...}
 ```
+Use `hasOwnProperty` rather than `in` to check for object properties, unless you have good reason.
+```
+// bad
+if ("Hi" in myObj) {...}
+// good
+if (myObj.hasOwnProperty("Hi")) {...}
+```
+Similarly, qualify your `for-in` loops with a `hasOwnProperty` check
+```
+for (var prop in myObj) {
+    if (myObj.hasOwnProperty(prop)) {
+        //body
+    }
+}
+```
 Conditional statements should be formatted like this (note single space and no line break between curly brace and "else"):
 ```
 if (condition) {
